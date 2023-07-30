@@ -1,4 +1,4 @@
-let newWords = []
+let newWords = {}
 
 const savePhrase = () => {
     const url = new URL(window.location.href)
@@ -15,9 +15,9 @@ const savePhrase = () => {
             translated_phrase: phrase,
             translated_lang: destLang
         }
-        if (newWords.length > 0) {
+        if (Object.values(newWords).length > 0) {
             params.new_words = newWords
-            newWords = []
+            newWords = {}
         }
         if (sourcePhrase) {
             fetch('http://127.0.0.1:7777/save-phrase', {
@@ -51,9 +51,9 @@ const observeNewWords = () => {
                     if (translationSpans.length > 0) {
                         const translations = []
                         translationSpans.forEach(el => {
-                            translations.push([el.innerText])
+                            translations.push(el.innerText)
                         })
-                        newWords.push({ [newWord]: translations })
+                        newWords[newWord] = translations
                     }
                 }
             }
