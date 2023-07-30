@@ -1,0 +1,25 @@
+{
+  "description": "Extends google translate's interface by adding a save button",
+  "manifest_version": 2,
+  "name": "Google translate plus",
+  "version": "1.0",
+  "icons": {
+    "48": "icons/48.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://translate.google.com/*"],
+      "js": ["index.js"]
+    }
+  ],
+
+  "permissions": [
+    "webRequest",
+    "activeTab",
+    "http://localhost/*",
+    "http://127.0.0.1/*",
+    "webNavigation"
+  ]
+
+}
